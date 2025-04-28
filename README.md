@@ -60,6 +60,20 @@ Given that in fraud detection recall (the ability to identify actual frauds) is 
   
 ### Model Comparison
 The ROC Curves below indicate that the Random Forest has the best performance across different threshold values and discriminates better the two classes comparing to Logistic Regression and Decision Trees classifiers.
-This is confirmed by the AUC (Area Under the Curve) value which is the highest for Random Forests (0.95).  
+This is confirmed by the AUC (Area Under the Curve) value which is the highest for Random Forests (0.95).      
+
+![ROC_Curves](https://github.com/leonemma/detect-frauds-in-creditcards/blob/main/plots/AUC.png)    
+
+From the barplot below, it's obvious that Random Forests achieved the highest recall score among the three models.   
+
+![Recall_Scores](https://github.com/leonemma/detect-frauds-in-creditcards/blob/main/plots/Recall_Scores_bars.png)    
+
+|       Model         | Recall | AUC  | 
+|---------------------|--------|------|
+| Logistic Regression | 0.868  | 0.95 |
+|    Random Forests   | 0.892  | 0.97 |
+|    Decision Trees   | 0.864  | 0.91 |
 
 ## Summary
+Random Forests had the best performance in correctly identifying positive instances compared to Logistic Regression and Decision Trees and is chosen as the main model for detecting a fraud transaction.
+In summary, the machine learning model identifies successfully almost the 90% of fraudulent transactions, resulting in savings of $54,000 within a two-day period and over 2.4 million over three months.
