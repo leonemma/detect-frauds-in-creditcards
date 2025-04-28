@@ -32,7 +32,7 @@ Additionally, the dataset is highly imbalanced since the positive class (frauds)
 - The dataset includes 284,807 transactions recorded over a span of two days
 - The total amount of transactions is above $60,000
 - In summary, due to credit card fraud, the bank incurred losses exceeding $60,000 over a span of two days
-- The mean transaction amount for a fraud transaction is 122.21 and the for a non-fraud transaction is 88.29 . However, the largest fraud transaction amount is 2,165.87$, unlike with a non-fraud transaction that is 25,691.16$. We run the respective statistical t-test to ensure that the difference is statistically significant.
+- The mean transaction amount for a fraud transaction is 122.21 and the for a non-fraud transaction is 88.29 . However, the largest fraud transaction amount is $2,165.87, unlike with a non-fraud transaction that is $25,691.16 . We run the respective statistical t-test to ensure that the difference is statistically significant.
 
 ## Machine Learning
 ### Considerations
