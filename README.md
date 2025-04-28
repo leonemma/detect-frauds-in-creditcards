@@ -4,8 +4,11 @@
 - [Overview](#Overview)
 - [Data](#Data)
 - [Findings](#Findings)
- -[Statistical Analysis](#Statistical-Analysis) 
 - [Machine Learning](#Machine-Learning)
+   - [Considerations](#Considerations)
+   - [Strategy](#Strategy)
+   - [Model Evaluation](#Model-Evaluation)
+   - [Model Comparison](#Model-Comparison)
 - [Summary](#Summary)
 
 ## Overview
@@ -14,6 +17,7 @@ We explored three different machine learning methods:
 - Logistic regression
 - Random forests
 - Decision trees
+  
 The goal is to compare the performance of these methods in predicting whether a credit card transaction is fraudulent or not. By analyzing historical transaction data labeled with fraud indicators, we aim to build robust models capable of accurately identifying fraudulent activities.
 ## Data 
 The dataset is available on Kaggle (Machine Learning Group - ULB · Andrea: [Creditcard Fraud Detection](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud))
@@ -29,8 +33,33 @@ It contains only numerical input variables which are the result of a PCA transfo
 - In summary, due to credit card fraud, the bank incurred losses exceeding $60,000 over a span of two days
 - The mean transaction amount for a fraud transaction is 122.21 and the for a non-fraud transaction is 88.29 . However, the largest fraud transaction amount is 2165.87$, unlike with a non-fraud transaction that is 25691.16 . We observe from the above boxplot that all transactions amount that are above 5000 are non-fraud.
   
-### Statistical Analysis
 
 ## Machine Learning
+### Considerations
+**Downsizing Majority Class for Computational Efficiency**  
+- Dataset Reduction: The dataset reduction involved selecting a subset of 10,000 examples from the original 284807 examples. This downsizing was performed to avoid the computational cost while ensuring a manageable dataset size for training.
+- Selective Removal from Majority Class: Notably, examples were removed exclusively from the majority class, which typically represents the negative class (non-fraudulent transactions) in the dataset.
+**Impact on Model Performance**
+- It's crucial to acknowledge that downsizing the majority class may lead to some loss of information from this class. Consequently, there might be implications for the model's ability to accurately detect instances of non-fraudulent transactions.
+
+### Strategy
+By using the validation set approach (train-test-split), some of the instances from the positive class will end up in the test set. Since the number of positive examples are significantly small, building a predictive model by using this method will lead to a significant loss of information for the positive class.
+To avoid that, we are going to use the stratify Cross Validation.  
+- Stratified cross validation ensures that the proportion of the classes will be the same in every fold of K-fold CV.
+
+### Model Evaluation
+- Since the dataset is extremely inbalanced we will not focus on the accuracy metric. The accuracy tends to be misleading in extremely inbalanced datasets. In datasets like this, we expect accuracy be close to 0.99 . We care more about how the model performs in the positive class (fraud cases). Some metrics that we can use are the **recall score**, precision and **AUC-ROC curve**.
+- Recall is a critical metric for credit card fraud detection because it emphasizes the ability of the model to identify as many fraudulent transactions as possible. For this reason, Recall and AUC-ROC Curve will be the metrics that we will focus on the model evaluation.
+
+### Models Optimization
+After training the initial models — Decision Trees, Random Forests, and Logistic Regression, we focused on optimizing their performance for fraud detection.
+Given that in fraud detection recall (the ability to identify actual frauds) is more critical than precision, we optimized each model by adjusting the decision threshold rather than relying on the default 0.5.
+
+- By trying different values for threshold using K-Fold Cross Validation, each model achieved a significant improvement in recall score, successfully identifying more fraudulent transactions.
+- This optimization introduced a trade-off as well. Although recall increased, precision decreased slightly, meaning more false positives were accepted in exchange for catching more real frauds which is a necessary compromise in high-risk domains like fraud detection.
+  
+### Model Comparison
+The ROC Curves below indicate that the Random Forest has the best performance across different threshold values and discriminates better the two classes comparing to Logistic Regression and Decision Trees classifiers.
+This is confirmed by the AUC (Area Under the Curve) value which is the highest for Random Forests (0.95).  
 
 ## Summary
