@@ -49,7 +49,7 @@ To avoid that, we are going to use the Cross Validation.
 - Stratified cross validation ensures that the proportion of the classes will be the same in every fold of K-fold CV.
 
 ### Model Evaluation
-- Since the dataset is extremely inbalanced we will not focus on the accuracy metric. The accuracy tends to be misleading in extremely imbalanced datasets. In datasets like this, we expect accuracy be close to 0.99 . We care more about how the model performs in the positive class (fraud cases). Some metrics that we can use are the **recall score**, precision and **AUC-ROC curve**.
+Since the dataset is extremely inbalanced we will not focus on the accuracy metric. The accuracy tends to be misleading in extremely imbalanced datasets. In datasets like this, we expect accuracy be close to 0.99 . We care more about how the model performs in the positive class (fraud cases). Some metrics that we can use are the **recall score**, precision and **AUC-ROC curve**.
 - Recall is a critical metric for detecting frauds in credit cards because it shows off the ability of the model to identify as many fraudulent transactions as possible.
 
      $$ Recall = \frac{True Positives}{True Positives+False Negatives} $$  
