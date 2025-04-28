@@ -39,6 +39,7 @@ It contains only numerical input variables which are the result of a PCA transfo
 **Downsizing Majority Class for Computational Efficiency**  
 - Dataset Reduction: The dataset reduction involved selecting a subset of 10,000 examples from the original 284807 examples. This downsizing was performed to avoid the computational cost while ensuring a manageable dataset size for training.
 - Selective Removal from Majority Class: Notably, examples were removed exclusively from the majority class, which typically represents the negative class (non-fraudulent transactions) in the dataset.
+  
 **Impact on Model Performance**
 - It's crucial to acknowledge that downsizing the majority class may lead to some loss of information from this class. Consequently, there might be implications for the model's ability to accurately detect instances of non-fraudulent transactions.
 
