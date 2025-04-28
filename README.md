@@ -1,4 +1,4 @@
-# CreditCard-Faud-Detection
+# Credit Card Fraud Detection
 - The source code for this project is available [here](https://github.com/leonemma/detect-frauds-in-creditcards/blob/main/creditcard-fraud-detector.ipynb)
 ## Contents
 - [Overview](#Overview)
